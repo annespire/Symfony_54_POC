@@ -1,0 +1,134 @@
+{
+    "type": "project",
+    "license": "proprietary",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.4",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "ext-sodium": "*",
+        "aws/aws-sdk-php": "^3.143",
+        "doctrine/annotations": "^2.0",
+        "doctrine/doctrine-bundle": "^2.9",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.14",
+        "eluceo/ical": "^0.11.3",
+        "ezyang/htmlpurifier": "^4.13",
+        "firebase/php-jwt": "^6.0",
+        "guzzlehttp/guzzle": "^7.4",
+        "matomo/device-detector": "^5.0",
+        "paypal/rest-api-sdk-php": "1.*",
+        "phpdocumentor/reflection-docblock": "^5.3",
+        "phpstan/phpdoc-parser": "^1.19",
+        "sensio/framework-extra-bundle": "^6.1",
+        "stripe/stripe-php": "^7.117",
+        "swiftmailer/swiftmailer": "^5.4",
+        "symfony/asset": "5.4.*",
+        "symfony/console": "5.4.*",
+        "symfony/doctrine-messenger": "5.4.*",
+        "symfony/dotenv": "5.4.*",
+        "symfony/expression-language": "5.4.*",
+        "symfony/flex": "^1.17|^2",
+        "symfony/form": "5.4.*",
+        "symfony/framework-bundle": "5.4.*",
+        "symfony/http-client": "5.4.*",
+        "symfony/http-foundation": "^5.0",
+        "symfony/intl": "5.4.*",
+        "symfony/mailer": "5.4.*",
+        "symfony/mime": "5.4.*",
+        "symfony/monolog-bundle": "^3.0",
+        "symfony/notifier": "5.4.*",
+        "symfony/process": "5.4.*",
+        "symfony/property-access": "5.4.*",
+        "symfony/property-info": "5.4.*",
+        "symfony/runtime": "5.4.*",
+        "symfony/security-bundle": "5.4.*",
+        "symfony/serializer": "5.4.*",
+        "symfony/string": "5.4.*",
+        "symfony/templating": "5.4.*",
+        "symfony/translation": "5.4.*",
+        "symfony/twig-bundle": "5.4.*",
+        "symfony/validator": "5.4.*",
+        "symfony/web-link": "5.4.*",
+        "symfony/yaml": "5.4.*",
+        "tecnickcom/tcpdf": "~6.2",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0",
+        "twilio/sdk": "^6.7",
+        "wrpn/powerform-php": "dev-master"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "php-http/discovery": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/kremit/powerform-php"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"App\\": "src/",
+			"Silex\\": "src/Shim/",
+			"EZPZTicketing\\": "src/boxoffice/app/lib/",
+			"EZPZTicketing\\BoxOffice\\": "src/boxoffice/app/controllers/",
+			"EZPZTicketing\\BoxOffice\\Addons\\": "src/boxoffice/app/addons/",
+			"EZPZTicketing\\BoxOffice\\Services\\": "src/boxoffice/app/services/",
+			"EZPZTicketing\\BoxOffice\\Validators\\": "src/boxoffice/app/validators/"
+		},
+		"classmap": [
+		]
+	},
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ]
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "5.4.*"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "symfony/browser-kit": "5.4.*",
+        "symfony/css-selector": "5.4.*",
+        "symfony/debug-bundle": "5.4.*",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/phpunit-bridge": "^6.2",
+        "symfony/stopwatch": "5.4.*",
+        "symfony/web-profiler-bundle": "5.4.*"
+    }
+}

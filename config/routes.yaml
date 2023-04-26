@@ -1,0 +1,1074 @@
+info:
+    path: /info
+    controller: EZPZTicketing\BoxOffice\LoginController::handOff
+    defaults:
+        action: info
+    methods: GET
+
+login:
+    path: /{action}
+    controller: EZPZTicketing\BoxOffice\LoginController::handOff
+    methods: GET|POST
+    requirements:
+        action: '(login|logout)?'
+
+forgot-password:
+    path: /login/lost
+    controller: EZPZTicketing\BoxOffice\LoginController::handOff
+    defaults:
+        action: forgot
+
+reset-password:
+    path: /login/reset/{user_id}/{reset_code}
+    controller: EZPZTicketing\BoxOffice\LoginController::handOff
+    defaults:
+        action: reset
+
+view-as:
+    path: /admin/view/{user_id}
+    controller: EZPZTicketing\BoxOffice\LoginController::handOff
+    defaults:
+        action: swap
+
+login-remote:
+    path: /login/remote
+    controller: EZPZTicketing\BoxOffice\LoginController::handOff
+    defaults:
+        action: remote
+
+hometown-login:
+    path: /login/hometown
+    controller: EZPZTicketing\BoxOffice\Login\HomeTownLoginController::login
+    methods: GET
+
+hometown-login-success:
+    path: /login/hometown/success
+    controller: EZPZTicketing\BoxOffice\Login\HomeTownLoginController::loginSuccess
+    methods: GET
+
+embed-js:
+    path: /embed/remote.js
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::embedJavascriptHandler
+
+global-embed-old:
+    path: /venue_embed/all
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::handOff
+    defaults:
+        venue_id: all
+
+venue-embed-old:
+    path: /venue_embed/{venue_id}
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::handOff
+
+global-embed:
+    path: /embed/all
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::handOff
+    defaults:
+        venue_id: all
+
+venue-embed:
+    path: /embed/venue/{venue_id}
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::handOff
+
+countdown-global-embed-old:
+    path: /countdown_embed/all
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::showCountdownEmbed
+    defaults:
+        venue_id: all
+
+countdown-embed-old:
+    path: /countdown_embed/{venue_id}
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::showCountdownEmbed
+
+countdown-global-embed:
+    path: /countdown/all
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::showCountdownEmbed
+    defaults:
+        venue_id: all
+
+countdown-embed:
+    path: /countdown/venue/{venue_id}
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::showCountdownEmbed
+
+countdown-embed-countdown-event:
+    path: /countdown/event/{events}
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::showCountdownEmbed
+    defaults:
+        venue_id: all
+
+venue-embed-event-old:
+    path: /venue_embed/event/{id}
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::showEvent
+
+venue-embed-event-seating-old:
+    path: /venue_embed/event/{id}/seating
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::showEventSeatingChart
+
+checkout-old:
+    path: /venue_embed/checkout/{trans_id}
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::checkout
+    defaults:
+        trans_id: NULL
+
+venue-embed-event:
+    path: /embed/event/{id}
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::showEvent
+
+venue-embed-event-seating:
+    path: /embed/event/{id}/seating
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::showEventSeatingChart
+
+checkout:
+    path: /embed/checkout/{trans_id}
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::checkout
+    defaults:
+        trans_id: NULL
+
+share-tickets:
+    path: /direct/share_tickets/{id}
+    controller: EZPZTicketing\BoxOffice\ShareTicketsControllerSite::shareTickets
+
+revoke-tickets:
+    path: /direct/revoke_tickets/{id}
+    controller: EZPZTicketing\BoxOffice\ShareTicketsControllerSite::revokeTickets
+
+view-shared-tickets:
+    path: /direct/tix/{order_id}/{share_code}
+    controller: EZPZTicketing\BoxOffice\ShareTicketsControllerSite::viewSharedTickets
+
+share-tickets-gapi:
+    path: /api/sharetix/share_tickets
+    controller: EZPZTicketing\BoxOffice\ShareTicketsControllerSite::shareTicketsGapi
+
+revoke-tickets-gapi:
+    path: /api/sharetix/revoke_tickets
+    controller: EZPZTicketing\BoxOffice\ShareTicketsControllerSite::revokeTicketsGapi
+
+api-get-venue-seats:
+    path: /api/seating/venue/{venue_id}/{event_id}
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::getSeats
+
+api-seat-search:
+    path: /api/seating/venue/{venue_id}/{event_id}/search
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::performSeatSearch
+
+api-event-publish:
+    path: /api/events/{event_id}/publish
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::publishEvent
+
+worker-event-publish:
+    path: /worker/events/publish
+    controller: EZPZTicketing\BoxOffice\AdminEventsController::publishEvent
+
+api-event-pin:
+    path: /api/events/{event_id}/pin
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::pinEvent
+
+api-calc-order:
+    path: /api/order/calc/{event_id}
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::calculateOrder
+
+api-pos-calc-order:
+    path: /api/order/pos/calc/{event_id}
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::calculatePOSOrder
+
+api-sale-data:
+    path: /api/sales/{event_id}
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::graphData
+    defaults:
+        event_id: NULL
+
+api-checkout:
+    path: /api/checkout
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::checkoutSession
+
+api-swap-season-tickets:
+    path: /api/season_tickets/swap/{event_id}
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::swapSeasonTicketSeat
+
+api-job-status:
+    path: /api/worker/jobstatus/{qtoken}
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::getJobStatus
+
+api-search-events:
+    path: /api/search_event
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::getEventSuggestions
+
+api-search-tables:
+    path: /admin/api/search_table
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::getFilterSuggestions
+
+api-multi-event-tickets:
+    path: /admin/search_multi_event_tickets
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::getMultiEventTickets
+
+api-event-donations:
+    path: /admin/api/events/{event_id}/donations/toggle
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::toggleEventDonations
+
+api-address-collection-setting:
+    path: /admin/api/events/{event_id}/address-collection-setting/toggle
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::toggleEventAddressCollection
+
+admin-global-address-collection:
+    path: /admin/settings/global-address-collection
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::globalAddressCollection
+
+admin:
+    path: /admin
+    controller: EZPZTicketing\BoxOffice\AdminControllerSite::handOff
+
+admin-scheduled-reports:
+    path: /admin/scheduled_reports
+    controller: EZPZTicketing\BoxOffice\AdminControllerSite::scheduledReports
+
+admin-promote:
+    path: /admin/promote
+    controller: EZPZTicketing\BoxOffice\AdminControllerSite::promote
+
+admin-event-list:
+    path: /admin/events
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::handOff
+
+admin-event-calendar:
+    path: /admin/events/calendar
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::showEventCalendar
+
+admin-event-new:
+    path: /admin/events/new
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::editEventForm
+
+admin-add-product-catalogs:
+    path: /admin/events/product_catalogs/{event_id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::editProductCatalogs
+
+admin-event-import:
+    path: /admin/events/import
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::importTypeForm
+
+admin-event-import-external:
+    path: /admin/events/import/external
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::importSportsGames
+
+admin-event-import-external-create-event:
+    path: /admin/events/import/external/event
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::importSportsGamesCreateEvents
+
+admin-event-import-external-create-tickets:
+    path: /admin/events/import/external/tickets
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::importEventsTicketPrice
+
+admin-event-import-external-confirm-tickets:
+    path: /admin/events/import/external/tickets/confirm
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::importEventsConfirmTickets
+
+admin-event-import-external-review:
+    path: /admin/events/import/external/review
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::reviewEvents
+
+admin-event-import-configure-seat-map:
+    path: /admin/events/import/external/seatmap
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::configureSeatMap
+
+admin-event-import-external-complete:
+    path: /admin/events/import/external/complete
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::createEventsFromBulkImport
+
+admin-event-import-external-filter-update:
+    path: /admin/events/import/external/filter_update
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::filterUpdated
+
+admin-event-import-template:
+    path: /admin/events/import_template
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::downloadImportTemplate
+
+admin-preview-imported-events-from-csv:
+    path: /admin/events/preview-imported-events-from-csv
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::previewImportedEventsFromCSV
+
+finalize-event-csv-import:
+    path: /admin/events/finalize-event-csv-import
+    controller: EZPZTicketing\BoxOffice\AdminEventsImportControllerSite::finalizeImportedEventsFromCSV
+
+admin-event-season-tickets:
+    path: /admin/events/season_tickets
+    controller: EZPZTicketing\BoxOffice\AdminSeasonTicketControllerSite::eventsSeasonTicketsPackage
+
+admin-create-season-tickets:
+    path: /admin/create/season_tickets
+    controller: EZPZTicketing\BoxOffice\AdminSeasonTicketControllerSite::createSeasonTicketsPackage
+
+admin-review-season-tickets:
+    path: /admin/review/season_tickets
+    controller: EZPZTicketing\BoxOffice\AdminSeasonTicketControllerSite::reviewSeasonTicketsPackage
+
+admin-complete-season-tickets:
+    path: /admin/complete/season_tickets
+    controller: EZPZTicketing\BoxOffice\AdminSeasonTicketControllerSite::completeSeasonTicketsPackage
+
+admin-event-csv:
+    path: /admin/events/view/{id}/csv
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::csvEventGuestList
+
+admin-event-print-ready-csv:
+    path: /admin/events/view/{id}/print_ready/csv
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::csvEventPrintReadyTickets
+
+admin-event-clear-check-ins:
+    path: /admin/events/view/{id}/clear_check_ins
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::clearEventCheckIns
+
+admin-bulk-refund:
+    path: /admin/events/bulk-refund/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::requestBulkRefund
+
+admin-bulk-renewal:
+    path: /admin/events/bulk-renewal/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::sendBulkRenewalEmail
+
+admin-release-holds:
+    path: /admin/events/release-holds/{event_id}
+    controller: EZPZTicketing\BoxOffice\AdminSeasonTicketControllerSite::releaseSeasonTicketsHolds
+
+admin-bulk-refund-list:
+    path: /admin/bulk-refund/list
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::listBulkRefund
+
+admin-refund-view:
+    path: /admin/bulk-refund/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::showBulkRefund
+
+admin-refund-update:
+    path: /admin/bulk-refund/{id}/update
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::updateBulkRefund
+
+admin-season-pass-csv:
+    path: /admin/season_pass/view/{id}/csv
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::csvSeasonPassList
+
+admin-event-view:
+    path: /admin/events/view/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::showEvent
+
+admin-event-edit:
+    path: /admin/events/edit/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::editEventForm
+
+admin-event-showtimes:
+    path: /admin/events/showtimes/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::showtimesEvent
+
+admin-view-sample-ticket:
+    path: /admin/events/view-sample-ticket/{event_id}
+    controller: EZPZTicketing\BoxOffice\TicketingControllerSite::generateSampleOrderTicket
+
+admin-event-advanced:
+    path: /admin/events/advanced/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::advancedEvent
+
+admin-event-fees-edit:
+    path: /admin/events/fees/edit/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::editEventFee
+
+admin-custom-fields-edit:
+    path: /admin/events/custom_fields/edit/{id}
+    controller: EZPZTicketing\BoxOffice\AdminCustomFieldsController::editCustomFields
+
+admin-custom-fields-preview:
+    path: /admin/events/custom_fields/preview/{id}
+    controller: EZPZTicketing\BoxOffice\AdminCustomFieldsController::previewCustomFields
+
+admin-custom-fields-insert:
+    path: /admin/events/custom_fields/insert/{id}
+    controller: EZPZTicketing\BoxOffice\AdminCustomFieldsController::insertCustomFields
+
+admin-event-delete:
+    path: /admin/events/delete/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::deleteEvent
+
+admin-event-clone:
+    path: /admin/events/clone/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::cloneEvent
+
+admin-guest-list:
+    path: /admin/events/view/{id}/guestlist
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::showEventGuestList
+
+admin-guest-list-notifications:
+    path: /admin/events/view/{id}/guestlist_notifications
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::showGuestNotificationHistory
+
+admin-guest-list-notifications-embed:
+    path: /admin/events/notifications/{id}/embed
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::guestNotificationEmbed
+
+admin-ticket-delivery:
+    path: /admin/events/email/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::ticketEmailDelivery
+
+admin-season-pass-list:
+    path: /admin/events/view/{id}/seasonpasslist
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::editGuestDetails
+
+admin-update-season-pass:
+    path: /admin/update/seasonpass/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::updateGuestDetail
+
+admin-edit-season-pass:
+    path: /admin/edit/seasonpass/{event_id}
+    controller: EZPZTicketing\BoxOffice\AdminTicketsControllerSite::seasonPassEditor
+
+admin-event-capacity:
+    path: /admin/events/capacity/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::setEventCapacity
+
+admin-settings:
+    path: /admin/settings
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::handOff
+
+admin-settings-fees:
+    path: /admin/settings/event-fees
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::eventFees
+
+admin-settings-terms:
+    path: /admin/settings/event-terms
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::eventTerms
+
+admin-team-settings:
+    path: /admin/teams/manage
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::showTeams
+
+admin-memory-settings:
+    path: /admin/memory/manage
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::manageMemoryLimits
+
+admin-integrations-settings:
+    path: /admin/integrations/manage
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::manageIntegrations
+
+admin-integrations-update:
+    path: /admin/integrations/update
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::updateIntegrations
+
+admin-team-add:
+    path: /admin/teams/new
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::newTeam
+
+admin-team-delete:
+    path: /admin/teams/delete/{id}
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::deleteTeam
+
+admin-team-update:
+    path: /admin/teams/update/{id}
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::editTeam
+
+admin-season-name-update:
+    path: /admin/teams/season/update
+    controller: EZPZTicketing\BoxOffice\AdminSettingsControllerSite::editSeasonName
+
+admin-edit-metadata-fields:
+    path: /admin/settings/metadata/edit
+    controller: EZPZTicketing\BoxOffice\AdminMetadataController::editMetadata
+
+admin-insert-metadata-fields:
+    path: /admin/settings/metadata/insert
+    controller: EZPZTicketing\BoxOffice\AdminMetadataController::insertMetadata
+
+admin-products:
+    path: /admin/settings/products
+    controller: EZPZTicketing\BoxOffice\AdminProductsController::products
+
+admin-products-update:
+    path: /admin/settings/products-update-insert
+    controller: EZPZTicketing\BoxOffice\AdminProductsController::addUpdateCatalogAndProducts
+
+admin-team-sort-api:
+    path: /admin/api/teams/sortidx
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::updateTeamSort
+
+admin-api-event-update-image:
+    path: /admin/api/event/update-image
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::updateEventImage
+
+admin-api-update-school-image:
+    path: /admin/api/school/update-image
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::updateSchoolImage
+
+admin-api-update-embed-scroll:
+    path: /admin/api/embed/update-scroll
+    controller: EZPZTicketing\BoxOffice\AdminController::updateEmbedAutoScroll
+
+admin-venue-list:
+    path: /admin/venues
+    controller: EZPZTicketing\BoxOffice\AdminVenuesControllerSite::handOff
+
+admin-venue-edit:
+    path: /admin/venues/edit/{id}
+    controller: EZPZTicketing\BoxOffice\AdminVenuesControllerSite::editVenueForm
+    defaults:
+        id: NULL
+
+admin-venue-delete:
+    path: /admin/venues/delete/{id}
+    controller: EZPZTicketing\BoxOffice\AdminVenuesControllerSite::deleteVenue
+
+admin-upload-season-pass:
+    path: /admin/upload/seasonpass/{id}
+    controller: EZPZTicketing\BoxOffice\AdminSeasonPassesControllerSite::uploadSeasonPass
+
+admin-export-season-pass:
+    path: /admin/export/seasonpass/{id}
+    controller: EZPZTicketing\BoxOffice\AdminSeasonPassesControllerSite::exportSeasonPasses
+
+admin-insert-season-pass:
+    path: /admin/insert/seasonpass/{id}
+    controller: EZPZTicketing\BoxOffice\AdminSeasonPassesControllerSite::insertSeasonPasses
+
+process-all-tickets:
+    path: /process/ticket/order/{id}
+    controller: EZPZTicketing\BoxOffice\TicketingControllerSite::createJobOrderTickets
+
+download-all-tickets:
+    path: /fetch/ticket/order/{id}
+    controller: EZPZTicketing\BoxOffice\TicketingControllerSite::downloadOrderTickets
+
+process-ticket:
+    path: /process/ticket/{id}
+    controller: EZPZTicketing\BoxOffice\TicketingControllerSite::handOff
+
+download-ticket:
+    path: /fetch/ticket/{id}
+    controller: EZPZTicketing\BoxOffice\TicketingControllerSite::downloadTicket
+
+ical:
+    path: /process/ical/{id}
+    controller: EZPZTicketing\BoxOffice\AdminEventsControllerSite::iCal
+
+admin-confirm-ticket-levels:
+    path: /admin/tickets/confirm/event/{event_id}
+    controller: EZPZTicketing\BoxOffice\AdminTicketsControllerSite::showTicketLevels
+
+admin-ticket-prices-new:
+    path: /admin/tickets/pricing/event/{event_id}
+    controller: EZPZTicketing\BoxOffice\AdminTicketsControllerSite::editTicketPriceForm
+    defaults:
+        id: NULL
+
+admin-season-ticket-prices-new:
+    path: /admin/season-tickets/pricing/event/{event_id}
+    controller: EZPZTicketing\BoxOffice\AdminTicketsControllerSite::editSeasonTicketPriceForm
+    defaults:
+        id: NULL
+
+admin-ticket-prices-edit:
+    path: /admin/tickets/pricing/edit/{id}
+    controller: EZPZTicketing\BoxOffice\AdminTicketsControllerSite::editTicketPriceForm
+    defaults:
+        event_id: NULL
+
+admin-ticket-prices-clone:
+    path: /admin/tickets/pricing/clone/{id}
+    controller: EZPZTicketing\BoxOffice\AdminTicketsControllerSite::cloneTicketPrice
+
+admin-ticket-prices-delete:
+    path: /admin/tickets/pricing/delete/{id}
+    controller: EZPZTicketing\BoxOffice\AdminTicketsControllerSite::deleteTicketPrice
+
+admin-ticket-prices-delete-tier:
+    path: /admin/tickets/tier/delete/{id}
+    controller: EZPZTicketing\BoxOffice\AdminTicketsControllerSite::deleteIndividualTier
+
+admin-ticket-prices-seating:
+    path: /admin/tickets/pricing/event/{event_id}/seating
+    controller: EZPZTicketing\BoxOffice\AdminTicketPriceSeatingControllerSite::showTicketPriceSeatMap
+
+admin-ticket-prices-seating-seat-manifest:
+    path: /admin/tickets/pricing/event/{event_id}/seating/manifest
+    controller: EZPZTicketing\BoxOffice\AdminTicketPriceSeatingControllerSite::exportSeatManifest
+
+admin-ticket-prices-assign-seats:
+    path: /admin/tickets/pricing/event/{event_id}/seating/update
+    controller: EZPZTicketing\BoxOffice\AdminTicketPriceSeatingControllerSite::updateSeatTicketPrices
+
+admin-season-pass-customize:
+    path: /admin/passes/customize/{id}
+    controller: EZPZTicketing\BoxOffice\AdminSeasonPassesControllerSite::customizeTool
+
+admin-event-checkin:
+    path: /admin/events/{event_id}/checkin
+    controller: EZPZTicketing\BoxOffice\AdminCheckinControllerSite::handOff
+
+admin-event-checkin-api:
+    path: /admin/events/{event_id}/checkin/process
+    controller: EZPZTicketing\BoxOffice\AdminCheckinControllerSite::barcodeHandler
+
+admin-guest-list-api:
+    path: /admin/events/{event_id}/guestlist/refresh
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::liveGuestCount
+
+admin-venue-seatmap:
+    path: /admin/venues/seatmap
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::getVenuesSeatmapStatus
+
+admin-ticket-sort-api:
+    path: /admin/api/events/{event_id}/sortidx
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::updateTicketLevelSort
+
+admin-ticket-count-api:
+    path: /admin/api/events/{event_id}/tickets/refresh
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::liveTicketCount
+
+admin-promocode:
+    path: /admin/events/{event_id}/promocode
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::handOff
+
+admin-delete-promocode:
+    path: /admin/promocode/delete/{event_id}/{code}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::deleteCode
+
+admin-edit-promocode:
+    path: /admin/promocode/edit/{event_id}/{code}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::editPromoCode
+    defaults:
+        code: NULL
+
+admin-delete-promocode-bulk:
+    path: /admin/promocode/delete/{event_id}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::deleteCodeBulk
+    defaults:
+        passcode_type: 0
+
+admin-edit-global-promocode:
+    path: /admin/promocode/global/edit/{pool_id}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::editGlobalPromoCode
+    defaults:
+        pool_id: NULL
+        flag: 0
+
+admin-edit-global-passcode:
+    path: /admin/passcode/global/edit/{pool_id}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::editGlobalPromoCode
+    defaults:
+        pool_id: NULL
+        flag: 1
+
+admin-edit-global-presale:
+    path: /admin/presale/global/edit/{pool_id}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::editGlobalPromoCode
+    defaults:
+        pool_id: NULL
+        flag: 2
+
+admin-edit-multi-promocode:
+    path: /admin/promocode/multi/edit
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::newMultiPromoCode
+
+admin-edit-passcode:
+    path: /admin/passcode/edit/{event_id}/{code}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::editPassCode
+    defaults:
+        code: NULL
+
+admin-delete-passcode-bulk:
+    path: /admin/passcode/delete/{event_id}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::deleteCodeBulk
+    defaults:
+        passcode_type: 1
+
+admin-edit-presale:
+    path: /admin/presale/edit/{event_id}/{code}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::editPreSale
+    defaults:
+        code: NULL
+
+admin-delete-presale-bulk:
+    path: /admin/presale/delete/{event_id}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::deleteCodeBulk
+    defaults:
+        passcode_type: 2
+
+admin-delete-selected-presale:
+    path: /admin/presale/delete-selected/{event_id}/{selected}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::deleteSelectedCodes
+    defaults:
+        passcode_type: 2
+
+admin-delete-selected-passcode:
+    path: /admin/passcode/delete-selected/{event_id}/{selected}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::deleteSelectedCodes
+    defaults:
+        passcode_type: 1
+
+admin-delete-selected-promocode:
+    path: /admin/promocode/delete-selected/{event_id}/{selected}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::deleteSelectedCodes
+    defaults:
+        passcode_type: 0
+
+admin-clone-promocode:
+    path: /admin/promocode/clone/{event_id}/{code}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::cloneCode
+
+admin-export-codes:
+    path: /admin/{code_type}/export/{event_id}
+    controller: EZPZTicketing\BoxOffice\AdminPromocodeControllerSite::exportCodes
+
+admin-accounts:
+    path: /admin/users/{mode}/{user_id}
+    controller: EZPZTicketing\BoxOffice\AdminAccountsController::handOff
+    defaults:
+        mode: list
+        user_id: NULL
+
+admin-notifications:
+    path: /admin/api/notifications/{user_id}
+    controller: EZPZTicketing\BoxOffice\NotificationsController::handOff
+
+ack-notification:
+    path: /admin/api/notification/{id}/ack
+    controller: EZPZTicketing\BoxOffice\NotificationsController::ackNotification
+
+check-notifications:
+    path: /admin/notifications/{user_id}/check
+    controller: EZPZTicketing\BoxOffice\NotificationsController::checkNotifications
+
+admin-billing:
+    path: /admin/billing
+    controller: EZPZTicketing\BoxOffice\AdminPaymentModule::handOff
+
+admin-payouts:
+    path: /admin/reports/payouts/{acct_id}
+    controller: EZPZTicketing\BoxOffice\AdminPaymentModule::viewTransactions
+    defaults:
+        acct_id: NULL
+
+admin-transactions:
+    path: /admin/transactions/{acct_id}
+    controller: EZPZTicketing\BoxOffice\AdminPaymentModule::csvTransactions
+    defaults:
+        acct_id: NULL
+
+admin-codegenerator:
+    path: /admin/integrate/embed
+    controller: EZPZTicketing\BoxOffice\AdminControllerSite::generateEmbed
+
+admin-blacklist:
+    path: /admin/blacklist
+    controller: EZPZTicketing\BoxOffice\AdminBlacklistController::getBlacklistedDomains
+
+admin-blacklist-update:
+    path: /admin/blacklist/update
+    controller: EZPZTicketing\BoxOffice\AdminBlacklistController::updateBlacklist
+
+admin-oauth-stripe:
+    path: /admin/connect/stripe
+    controller: EZPZTicketing\BoxOffice\AdminPaymentModule::oAuthStripe
+
+admin-billing-new-account:
+    path: /admin/billing/new
+    controller: EZPZTicketing\BoxOffice\AdminPaymentModule::newSalesAccount
+
+admin-billing-new-account-stackpay:
+    path: /admin/billing/new/stackpay
+    controller: EZPZTicketing\BoxOffice\AdminPaymentModule::openStackPayMerchantAccount
+
+admin-billing-assign:
+    path: /admin/billing/edit/{id}
+    controller: EZPZTicketing\BoxOffice\AdminPaymentModule::editSalesAccount
+
+admin-billing-rename:
+    path: /admin/billing/rename/{id}
+    controller: EZPZTicketing\BoxOffice\AdminPaymentModule::editName
+
+admin-billing-reset:
+    path: /admin/billing/reset/{id}
+    controller: EZPZTicketing\BoxOffice\AdminPaymentModule::resetAccountAssignment
+
+admin-billing-detail:
+    path: /admin/billing/detail/{id}
+    controller: EZPZTicketing\BoxOffice\AdminPaymentModule::fetchAccountAssignments
+
+admin-billing-update-fees:
+    path: /admin/billing/fees/update/{id}
+    controller: EZPZTicketing\BoxOffice\AdminPaymentModule::updateSalesAccountFee
+
+admin-stripe-terminal-token:
+    path: /api/payment/terminal/token
+    controller: EZPZTicketing\BoxOffice\StripeTerminalController::stripeTerminalConnectionToken
+
+admin-bluefin-verify-device:
+    path: /api/payment/bluefin/verify-device
+    controller: EZPZTicketing\BoxOffice\Payment\Bluefin\BluefinDeviceController::bluefinVerifyDevice
+
+admin-stripe-new-location:
+    path: /api/payment/terminal/location
+    controller: EZPZTicketing\BoxOffice\StripeTerminalController::stripeTerminalNewLocation
+
+admin-stripe-register-device:
+    path: /api/payment/terminal/register-device
+    controller: EZPZTicketing\BoxOffice\StripeTerminalController::stripeTerminalRegisterReader
+
+admin-order-list:
+    path: /admin/orders
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::handOff
+
+admin-order-csv:
+    path: /admin/orders/csv
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::csvOrderList
+
+admin-email-csv:
+    path: /admin/orders/email
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::csvEmailList
+
+admin-order-view:
+    path: /admin/orders/{id}
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::showOrder
+
+admin-order-void:
+    path: /admin/orders/{id}/void
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::voidOrder
+
+admin-order-refund:
+    path: /admin/orders/{order_id}/refund
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::refundOrder
+
+admin-order-receipt:
+    path: /admin/orders/{id}/receipt
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::reSendReceiptEmail
+
+admin-bulk-order-receipt:
+    path: /admin/event/{event_id}/orders/bulk-receipt
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::reSendBulkReceiptEmail
+
+admin-order-receipt-txt:
+    path: /admin/orders/{id}/receipt/txt
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::reSendReceiptText
+
+admin-order-edit:
+    path: /admin/orders/{id}/edit
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::updateOrderDetails
+
+admin-order-ticket-edit:
+    path: /admin/orders/updateticket/{id}/edit
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::updateOrderTicketDetails
+
+admin-order-transaction:
+    path: /admin/orders/{id}/update-transaction
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::updateOrderTransaction
+
+admin-api-order-detail:
+    path: /admin/orders/{id}/feed
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::getOrderDetailJson
+
+admin-ticket-void:
+    path: /admin/tickets/{id}/void
+    controller: EZPZTicketing\BoxOffice\AdminTicketsControllerSite::voidTicket
+
+admin-product-void:
+    path: /admin/products/{orders_line_items_id}/{order_id}/void
+    controller: EZPZTicketing\BoxOffice\AdminProductsControllerSite::voidProduct
+
+admin-order-new:
+    path: /admin/events/{event_id}/order/new
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::newOrder
+    defaults:
+        id: NULL
+
+admin-order-pos-new:
+    path: /admin/events/{event_id}/order-pos
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::newOrderPOS
+    defaults:
+        id: NULL
+
+admin-product-order-pos-new:
+    path: /admin/events/{event_id}/product-pos
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::newOrderProductPOS
+    defaults:
+        id: NULL
+
+admin-order-bulk:
+    path: /admin/events/{event_id}/order-bulk
+    controller: EZPZTicketing\BoxOffice\AdminOrdersControllerSite::newOrderCSV
+    defaults:
+        id: NULL
+
+admin-audit:
+    path: /admin/stats/performance_audit
+    controller: EZPZTicketing\BoxOffice\AdminStatsControllerSite::handOff
+
+admin-reports:
+    path: /admin/reports
+    controller: EZPZTicketing\BoxOffice\AdminReportsControllerSite::handOff
+
+admin-reports-standard:
+    path: /admin/reports/standard/{report}
+    controller: EZPZTicketing\BoxOffice\AdminReportsControllerSite:standardReport
+
+admin-report-attendees-season:
+    path: /admin/reports/predefined/attendees-season-list
+    controller: EZPZTicketing\BoxOffice\AdminReportsControllerSite:attendeeSeasonReport
+
+admin-reports-audit:
+    path: /admin/stats/audit
+    controller: EZPZTicketing\BoxOffice\AdminStatsControllerSite::generatePerformanceAuditReport
+
+admin-series-audit:
+    path: /admin/stats/audit/series
+    controller: EZPZTicketing\BoxOffice\AdminStatsControllerSite::generatePerformanceAuditReportSeries
+
+admin-reports-data-gapi:
+    path: /api/stats/audit/data
+    controller: EZPZTicketing\BoxOffice\AdminStatsControllerSite::generatePerformanceAuditReportDataGapi
+
+admin-reports-user-pos:
+    path: /admin/stats/audit/pos-user
+    controller: EZPZTicketing\BoxOffice\AdminStatsControllerSite::generateUserPosPDF
+
+admin-seating-charts:
+    path: /admin/venues/seating/{seating_map_id}
+    controller: EZPZTicketing\BoxOffice\AdminSeatingChartsControllerSite::handOff
+
+admin-seating-charts-api:
+    path: /admin/venues/seating/{seating_map_id}/update
+    controller: EZPZTicketing\BoxOffice\AdminSeatingChartsControllerSite::saveSeatData
+
+admin-seating-charts-get:
+    path: /admin/venues/seating/{seating_map_id}/get
+    controller: EZPZTicketing\BoxOffice\AdminSeatingChartsControllerSite::getSeats
+
+admin-seating-charts-api-fill-control-points:
+    path: /admin/venues/seating/{seating_map_id}/fill_points
+    controller: EZPZTicketing\BoxOffice\AdminSeatingChartsControllerSite::fillControlPoints
+
+admin-seating-charts-api-search-select:
+    path: /admin/venues/seating/{seating_map_id}/select_search
+    controller: EZPZTicketing\BoxOffice\AdminSeatingChartsControllerSite::updateSearch
+
+admin-department-list:
+    path: /admin/departments
+    controller: EZPZTicketing\BoxOffice\AdminDepartmentsControllerSite::handOff
+
+admin-department-view:
+    path: /admin/departmentss/view/{id}
+    controller: EZPZTicketing\BoxOffice\AdminDepartmentsControllerSite::showdepartment
+
+admin-department-edit:
+    path: /admin/departments/edit/{id}
+    controller: EZPZTicketing\BoxOffice\AdminDepartmentsControllerSite::editdepartmentForm
+    defaults:
+        id: NULL
+
+admin-department-delete:
+    path: /admin/departments/delete/{id}
+    controller: EZPZTicketing\BoxOffice\AdminDepartmentsControllerSite::deletedepartment
+
+admin-school-list:
+    path: /admin/schools
+    controller: EZPZTicketing\BoxOffice\AdminSchoolsControllerSite::handOff
+
+admin-school-view:
+    path: /admin/schools/view/{id}
+    controller: EZPZTicketing\BoxOffice\AdminSchoolsControllerSite::showSchool
+
+admin-school-edit:
+    path: /admin/schools/edit/{id}
+    controller: EZPZTicketing\BoxOffice\AdminSchoolsControllerSite::editSchoolForm
+    defaults:
+        id: NULL
+
+admin-school-delete:
+    path: /admin/schools/delete/{id}
+    controller: EZPZTicketing\BoxOffice\AdminSchoolsControllerSite::deleteSchool
+
+addon-vendorlink-main:
+    path: /embed/students/fees
+    controller: EZPZTicketing\BoxOffice\Addons\ProgressBookVL\StudentFeesController::handOff
+
+admin-guest-notification-send:
+    path: /admin/events/notifications/{event_id}/send
+    controller: EZPZTicketing\BoxOffice\GuestListNotificationController::sendNotifications
+
+admin-guest-notification-by-id:
+    path: /admin/events/notifications/get
+    controller: EZPZTicketing\BoxOffice\GuestListNotificationController::getNotificationByCampaignId
+
+admin-tile-item-sort-order:
+    path: /admin/api/tile_embed/sortidx
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::updateTileItemSort
+
+admin-tile-embed-update-active:
+    path: /admin/api/tile_embed/{tile_id}/set_active
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::updateTileEmbedActive
+
+api-tile-embed-search-event:
+    path: /api/tile_embed/search_event
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::getEventSearchSuggestionsCustom
+
+admin-tile-embed-item-edit:
+    path: /admin/tile_embed/{tile_id}/item/{id}/edit
+    controller: EZPZTicketing\BoxOffice\AdminTileEmbedControllerSite::editTileItem
+
+admin-tile-embed-item-configure:
+    path: /admin/tile_embed/{tile_id}/item/{id}/configure
+    controller: EZPZTicketing\BoxOffice\AdminTileEmbedControllerSite::configureTileEmbedLayer
+
+admin-tile-embed-item-new:
+    path: /admin/tile_embed/{tile_id}/{parent_id}/item/new
+    controller: EZPZTicketing\BoxOffice\AdminTileEmbedControllerSite::editTileItem
+
+admin-tile-embed-item-delete:
+    path: /admin/tile_embed/item/{id}/delete
+    controller: EZPZTicketing\BoxOffice\AdminTileEmbedControllerSite::deleteTileItem
+
+admin-ticket-designs-list:
+    path: /admin/ticket_designs
+    controller: EZPZTicketing\BoxOffice\AdminTicketDesignsController::list
+
+admin-ticket-design-new:
+    path: /admin/ticket_designs/new
+    controller: EZPZTicketing\BoxOffice\AdminTicketDesignsController::edit
+
+admin-ticket-design-edit:
+    path: /admin/ticket_designs/{ticket_design_rule_id}/edit
+    controller: EZPZTicketing\BoxOffice\AdminTicketDesignsController::edit
+
+admin-ticket-design-delete:
+    path: /admin/ticket_designs/{ticket_design_rule_id}/delete
+    controller: EZPZTicketing\BoxOffice\AdminTicketDesignsController::delete
+
+admin-ticket-designs-sort-order:
+    path: /admin/api/ticket_designs/sortidx
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::updateTicketDesignRuleSort
+
+admin-ticket-design-active-api:
+    path: /admin/api/ticket_designs/set_active
+    controller: EZPZTicketing\BoxOffice\ApiControllerSite::setTicketDesignRuleActive
+
+show_event_flyer:
+    path: /embed/event_flyer/{event_id}
+    controller: EZPZTicketing\BoxOffice\EmbedControllerSite::showEventFlyer
+
+POST_admin_reports_standard_export_report:
+    path: /admin/reports/standard/export/{report}
+    controller: EZPZTicketing\BoxOffice\AdminReportsControllerSite:standardExport
+    methods: POST
+
+POST_admin_reports_filters_events:
+    path: /admin/reports/filters/events
+    controller: EZPZTicketing\BoxOffice\AdminReportsControllerSite:fetchEventFilterList
+    methods: POST
+
+POST_admin_reports_filters_departments:
+    path: /admin/reports/filters/departments
+    controller: EZPZTicketing\BoxOffice\AdminReportsControllerSite:fetchDepartmentFilterList
+    methods: POST
+
+POST_admin_reports_filters_schools:
+    path: /admin/reports/filters/schools
+    controller: EZPZTicketing\BoxOffice\AdminReportsControllerSite:fetchSchoolFilterList
+    methods: POST
+
+POST_admin_reports_filters_teams:
+    path: /admin/reports/filters/teams
+    controller: EZPZTicketing\BoxOffice\AdminReportsControllerSite:fetchTeamFilterList
+    methods: POST
